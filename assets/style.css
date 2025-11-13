@@ -1,0 +1,291 @@
+
+
+body{
+    margin: 0;
+    font-family: "Pixelify Sans", sans-serif;
+    background-color: #223;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    text-align: center;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+h1 {
+    color: #fff;
+    margin: 9px auto;
+    font-size: 42px;
+    letter-spacing: 4px;
+    animation: rainbow 15s infinite;
+    white-space: nowrap;
+    color: white !important;
+}
+
+h4 {
+    color: #fff;
+    font-size: 20px;
+    margin: 10px;
+    margin-top: 25px;
+}
+
+img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+@keyframes rainbow {
+    0% {
+        text-shadow: 0 0 6px red, 0 0 12px red, 0 0 18px red;
+    }
+    16% {
+        text-shadow: 0 0 6px orange, 0 0 12px orange, 0 0 18px orange;
+    }
+    32% {
+        text-shadow: 0 0 6px yellow, 0 0 12px yellow, 0 0 18px yellow;
+    }
+    48% {
+        text-shadow: 0 0 6px green, 0 0 12px green, 0 0 18px green;
+    }
+    64% {
+        text-shadow: 0 0 6px blue, 0 0 12px blue, 0 0 18px blue;
+    }
+    80% {
+        text-shadow: 0 0 6px indigo, 0 0 12px indigo, 0 0 18px indigo;
+    }
+    100% {
+        text-shadow: 0 0 6px violet, 0 0 12px violet, 0 0 18px violet;
+    }
+}
+
+small {
+    color: #ddd;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #555;
+    margin: 10px auto;
+    width: 80%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+#game{
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(23, 25px);
+    grid-template-rows: repeat(25, 25px);
+    width: max-content;
+    box-shadow: 0 0 16px;
+    border-radius: 5px;
+    padding: 10px;
+    border: 4px dashed rgba(136, 136, 6, 0.673);
+    background-color: rgba(0, 6, 12,1);
+}
+
+#vidas{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.cell {
+    width: 25px;
+    height: 25px;
+}
+
+.wall {
+    background-color: blue;
+}
+
+.path {
+    background-color: rgba(0, 6, 12, 1);
+}
+
+.dot {
+    background-color: rgba(0, 6, 12, 1);
+    position: relative;
+}
+
+.dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 3px yellow;
+    background: yellow;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.power {
+    background-color: rgba(0, 6, 12, 1);
+    position: relative;
+}
+
+.power::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    background: yellow;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulsePower 1.5s infinite;
+}
+
+@keyframes pulsePower {
+    0% {
+        box-shadow: 0 0 8px yellow;
+    }
+    50% {
+        box-shadow: 0 0 16px yellow;
+    }
+    100% {
+        box-shadow: 0 0 8px yellow;
+    }
+}
+
+.pacman {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('../public/packaa.gif');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.2s ease;
+}
+
+.score {
+    color: white;
+    font-size: 24px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    white-space: nowrap;
+}
+
+.timer {
+    color: white;
+    font-size: 24px;
+    margin-top: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    white-space: nowrap;
+}
+
+.ready {
+    color: #fff;
+    font-size: 20px;
+    margin-top: 10px;
+    white-space: nowrap;
+    letter-spacing: 2px;
+}
+
+.konamiText{
+    color: #ff0;
+    font-size: 18px;
+    margin-top: 10px;
+    white-space: nowrap;
+    letter-spacing: 2px;
+}
+
+.ghost {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+    image-rendering: pixelated;
+    background-image: url('../public/fantasma.gif');
+}
+
+.ghost.frightened {
+    /* usar GIF de estado comestible */
+    background-image: url("../public/fnt comestible.gif");
+    /* asegurar tamaño y visibilidad */
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 1;
+    filter: hue-rotate(0deg) saturate(600%) brightness(1.1) !important;
+}
+
+.ghost.red { 
+  filter: hue-rotate(200deg) saturate(600%) brightness(1.1);
+}
+
+.ghost.pink { 
+    filter: hue-rotate(170deg) saturate(600%) brightness(1.1);
+}
+
+.ghost.cyan { 
+    filter: hue-rotate(0deg) saturate(600%) brightness(1.1);
+}
+
+.ghost.orange { 
+    filter: hue-rotate(220deg) saturate(600%) brightness(1.1);
+}
+
+
+.modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.7);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+.modal-h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.modal-time {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffd700;
+    margin-top: 2px;
+}
+
+.modal-score {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #00ff00;
+    margin: 0;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+}
+
+.modal-button:hover {
+    background-color: #218838;
+}
+
+.hidden { display: none; }
