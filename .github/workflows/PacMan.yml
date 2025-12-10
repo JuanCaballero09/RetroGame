@@ -1,4 +1,4 @@
-name: Manual Deploy to Pages
+name: PacMan Deploy Pages
 
 on:
   workflow_dispatch:
